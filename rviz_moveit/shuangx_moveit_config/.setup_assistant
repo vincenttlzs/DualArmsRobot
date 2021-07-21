@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: shuang
+    relative_path: robots/shuang_all2.xacro
+  SRDF:
+    relative_path: config/shuang_all.srdf
+  CONFIG:
+    author_name: lzs
+    author_email: 1059612121@qq.com
+    generated_timestamp: 1527996751

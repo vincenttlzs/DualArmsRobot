@@ -1,0 +1,69 @@
+r_arm_controller:
+  type: effort_controllers/JointPositionController
+  joint: base_r_1_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: r_1_r_2_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: r_2_r_3_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: r_3_r_4_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: r_4_r_5_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: r_arm_wrist_flex_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      base_r_1_joint: {trajectory: 0.1, goal: 0.1}
+      r_1_r_2_joint: {trajectory: 0.1, goal: 0.1}
+      r_2_r_3_joint: {trajectory: 0.1, goal: 0.1}
+      r_3_r_4_joint: {trajectory: 0.1, goal: 0.1}
+      r_4_r_5_joint: {trajectory: 0.1, goal: 0.1}
+      r_arm_wrist_flex_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+
+
+l_arm_controller:
+  type: effort_controllers/JointPositionController
+  joint: base_l_1_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: l_1_l_2_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: l_2_l_3_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: l_3_l_4_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: l_4_l_5_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: l_arm_wrist_flex_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      base_l_1_joint: {trajectory: 0.1, goal: 0.1}
+      l_1_l_2_joint: {trajectory: 0.1, goal: 0.1}
+      l_2_l_3_joint: {trajectory: 0.1, goal: 0.1}
+      l_3_l_4_joint: {trajectory: 0.1, goal: 0.1}
+      l_4_l_5_joint: {trajectory: 0.1, goal: 0.1}
+      l_arm_wrist_flex_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+
+gripper_controller:
+  type: effort_controllers/JointTrajectoryController
+  joint: r_gripper_finger_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint: l_gripper_finger_joint
+  pid: {p: 100.0, i: 0.01, d: 10.0}
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      r_gripper_finger_joint: {trajectory: 0.1, goal: 0.1}
+      l_gripper_finger_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10

@@ -1,0 +1,90 @@
+    shuang_all:  
+
+      joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50 
+
+      base_r_1_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: base_r_1_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      r_1_r_2_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: r_1_r_2_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      r_2_r_3_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: r_2_r_3_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      r_3_r_4_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: r_3_r_4_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      r_4_r_5_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: r_4_r_5_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      r_arm_wrist_flex_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: r_arm_wrist_flex_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      r_gripper_finger_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: r_gripper_finger_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+
+
+
+      base_l_1_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: base_l_1_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      l_1_l_2_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: l_1_l_2_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      l_2_l_3_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: l_2_l_3_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      l_3_l_4_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: l_3_l_4_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      l_4_l_5_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: l_4_l_5_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      l_arm_wrist_flex_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: l_arm_wrist_flex_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+      l_gripper_finger_joint_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: l_gripper_finger_joint
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+
+
+
+
+
+
+
+
+
+
+
+

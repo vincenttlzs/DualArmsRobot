@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<robot name="base" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Define a number of dimensions using properties -->
+
+  <property name="wheel_offset_x" value="0.07" />
+  <property name="wheel_offset_y" value="0.13" />
+  <property name="wheel_offset_z" value="-0.0035" />
+  
+  <property name="base_radius" value="0.152" />
+  
+  <property name="base_mesh_scale" value="0.0254" />
+  
+  <property name="PI" value="3.1415" />
+     
+
+  <!-- The base xacro macro -->
+  <macro name="base" params="name color">
+    <link name="${name}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+           <mesh filename="package://shuang/meshes/base_Link.STL" scale="${base_mesh_scale} ${base_mesh_scale} ${base_mesh_scale}" />
+        </geometry>
+        <material name="${color}" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+       <geometry>
+          <mesh filename="package://shuang/meshes/base_Link.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+      <origin
+        xyz="0 0 0.574309464953838"
+        rpy="0 0 0" />
+      <mass
+        value="27.8662419165871" />
+      <inertia
+        ixx="3.11430930601702"
+        ixy="-0.000132493919007124"
+        ixz="0.0308207010248534"
+        iyy="3.05957771602693"
+        iyz="0.000700626437276238"
+        izz="0.164698375243901" />
+    </inertial>
+    </link>
+  </macro>
+
+  <link name="base_footprint">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.05 0.001" />
+        </geometry>
+        <material name="TransparentGreen" />
+      </visual>
+  </link>
+  
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />        
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+  
+ <!-- <link name="world"/>  
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_footprint"/>
+  </joint>  
+ The base xacro macro -->
+</robot>

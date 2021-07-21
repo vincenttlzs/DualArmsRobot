@@ -1,0 +1,44 @@
+    controller_manager_ns: controller_manager  
+    controller_list:  
+      - name: r_arm_controller  
+        action_ns: follow_joint_trajectory  
+        type: FollowJointTrajectory  
+        default: true  
+        joints:  
+          - base_r_1_link  
+          - r_1_r_2_joint  
+          - r_2_r_3_joint    
+          - r_3_r_4_joint 
+          - r_4_r_5_joint  
+          - r_arm_wrist_flex_joint  
+
+      - name: l_arm_controller  
+        action_ns: follow_joint_trajectory  
+        type: FollowJointTrajectory  
+        default: true  
+        joints:  
+          - base_l_1_link  
+          - l_1_l_2_join  
+          - l_2_l_3_joint 
+          - l_3_l_4_joint 
+          - l_4_l_5_joint  
+          - l_arm_wrist_flex_joint
+ 
+       - name: r_gripper_controller  
+         action_ns: gripper_action 
+         type: GripperCommand  
+         default: true  
+         joints:  
+           - r_gripper_finger_joint
+  
+       - name: l_gripper_controller  
+         action_ns: gripper_action 
+         type: GripperCommand 
+         default: true  
+         joints:  
+           - l_gripper_finger_joint 
+         
+
+
+
+ 

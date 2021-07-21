@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+
+<robot name="arm_hardware" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <property name="PI" value="3.14159"/>
+  <property name="DYNAMIXEL_MESH_SCALE" value="0.001"/>
+  
+  <property name="F2_WIDTH" value="0.0480"/>
+  <property name="F2_HEIGHT" value="0.0380"/>
+  <property name="F2_DEPTH" value="0.0245"/>
+  
+  <property name="F3_WIDTH" value="0.038"/>
+  <property name="F3_HEIGHT" value="0.009"/>
+  <property name="F3_DEPTH" value="0.025"/>
+    
+  <property name="F4_WIDTH" value="0.0480"/>
+  <property name="F4_HEIGHT" value="0.0625"/>
+  <property name="F4_DEPTH" value="0.0245"/>
+  
+  <property name="F9_DEPTH" value="0.025"/>
+ 
+  <property name="F10_HEIGHT" value="0.004"/>
+  <property name="F10_LENGTH" value="0.038"/>
+
+  <property name="AX12_HEIGHT" value="0.0385"/>
+  <property name="AX12_WIDTH" value="0.035"/>
+  <property name="AX12_DEPTH" value="0.049"/>
+    
+  <property name="ARM_MESH_EXT" value="stl"/> 
+
+  <macro name="finger" params="parent name color *origin">
+    <joint name="${name}_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}_link"/>
+      <child link="${name}_link" />
+    </joint>
+
+    <link name="${name}_link">
+      <inertial>
+        <mass value="0.02" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+      </inertial>
+
+      <visual>
+        <origin xyz=" 0 0 0 " rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://shuang/meshes/finger.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+        </geometry>
+        <material name="${color}"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0.02645 0.0 -0.00655" rpy="0 0 0" />
+        <geometry>
+          <box size="0.0783 0.03801 0.0193"/>
+        </geometry>
+      </collision>
+    </link>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <link name="${name}_hook">
+         <visual>
+            <origin xyz="0.061 0 -0.04" rpy="0 0 0" />
+            <geometry>
+               <box size="0.002 0.035 0.006"/>
+            </geometry>
+
+             <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+
+            <material name="Red" />
+         </visual>
+         <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+               <box size="0.005 0.035 0.005"/>
+            </geometry>
+         </collision>
+      </link>
+      
+      <joint name="${name}_hook_joint" type="fixed">
+         <origin xyz="0 0 0.02" rpy="0 0 0" />
+         <parent link="${name}_link" />
+         <child link="${name}_hook" />
+      </joint>
+
+
+  </macro>
+
+  <macro name="bioloid_F3_fixed" params="parent name color *origin">
+    <joint name="${name}_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}_link"/>
+      <child link="${name}_link" />
+    </joint>
+
+    <link name="${name}_link">
+      <inertial>
+        <mass value="0.00001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+      </inertial>
+
+      <visual>
+        <origin xyz=" 0 0 0 " rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://shuang/meshes/F3.stl" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+        </geometry>
+        <material name="${color}"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 -0.0045" rpy="0 0 0" />
+        <geometry>
+          <box size="0.025 0.038 0.009"/>
+        </geometry>
+      </collision>
+    </link>
+  </macro>
+  
+  
+
+  <macro name="dynamixel_AX12_fixed" params="parent name *origin">
+    <joint name="${name}_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}_link"/>
+      <child link="${name}_link" />
+    </joint>
+
+    <link name="${name}_link">
+      <inertial>
+        <mass value="0.00001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+      </inertial>
+
+      <visual>
+        <origin xyz=" 0 0 0 " rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://shuang/meshes/ax12.${ARM_MESH_EXT}" scale="0.0012 0.0012 0.0012"/>
+        </geometry>
+        <material name="Black"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 -0.01241" rpy="0 0 0" />
+        <geometry>
+          <box size="0.025 0.038 0.04762"/>
+        </geometry>
+      </collision>
+    </link>
+  </macro>
+  
+  <macro name="dynamixel_AX12_revolute" params="parent name llimit ulimit vlimit *origin *axis">
+    <joint name="${name}_joint" type="revolute">
+      <xacro:insert_block name="origin" />
+      <xacro:insert_block name="axis" />
+      <limit effort="2.0" velocity="${vlimit}" lower="${llimit}" upper="${ulimit}" />
+      <parent link="${parent}_link"/>
+      <child link="${name}_link" />
+
+    </joint>
+      <transmission name="tran_${name}">
+	    <type>transmission_interface/SimpleTransmission</type>
+	    <joint name="${name}_joint">
+
+	      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	    </joint>
+	    <actuator name="motor_${name}">
+
+	      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	    </actuator>
+      </transmission>
+
+    <link name="${name}_link">
+      <inertial>
+        <mass value="0.03" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+      </inertial>
+
+      <visual>
+        <origin xyz=" 0 0 0 " rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://shuang/meshes/ax12.${ARM_MESH_EXT}" scale="${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE} ${DYNAMIXEL_MESH_SCALE}"/>
+        </geometry>
+         <material name="Black"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 -0.01241" rpy="0 0 0" />
+        <geometry>
+          <box size="0.025 0.038 0.04762"/>
+        </geometry>
+      </collision>
+    </link>
+  </macro>
+   
+
+</robot>

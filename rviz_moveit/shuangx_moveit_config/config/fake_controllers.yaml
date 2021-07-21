@@ -1,0 +1,37 @@
+controller_list:
+  - name: fake_r_arm_controller
+    joints:
+      - base_r_1_joint
+      - r_1_r_2_joint
+      - r_2_r_3_joint
+      - r_3_r_4_joint
+      - r_4_r_5_joint
+      - r_arm_wrist_flex_joint
+  - name: fake_l_arm_controller
+    joints:
+      - base_l_1_joint
+      - l_1_l_2_joint
+      - l_2_l_3_joint
+      - l_3_l_4_joint
+      - l_4_l_5_joint
+      - l_arm_wrist_flex_joint
+  - name: fake_r_gripper_controller
+    joints:
+      - r_gripper_finger_joint
+  - name: fake_l_gripper_controller
+    joints:
+      - l_gripper_finger_joint
+  - name: fake_b_arms_controller
+    joints:
+      - base_l_1_joint
+      - l_1_l_2_joint
+      - l_2_l_3_joint
+      - l_3_l_4_joint
+      - l_4_l_5_joint
+      - l_arm_wrist_flex_joint
+      - base_r_1_joint
+      - r_1_r_2_joint
+      - r_2_r_3_joint
+      - r_3_r_4_joint
+      - r_4_r_5_joint
+      - r_arm_wrist_flex_joint

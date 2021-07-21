@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<robot name="shuang_5" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Define a number of dimensions using properties -->
+  
+  <property name="base_mesh_scale" value="1" />
+  
+  <property name="PI" value="3.1415926" />
+  <property name="five_offset_x" value="0.237" />
+  <property name="five_offset_y" value="0" />
+  <property name="five_offset_z" value="0" />     
+
+  <!-- The base xacro macro <axis xyz ="0 0 1">
+     <limit effort ="100" velocity ="100">
+     <safety_controller k_velocity ="10"> -->
+  <macro name="shuang_5" params="parent name suffix reflect color pose ">
+    <joint name="${parent}_${suffix}_${name}_joint" type="revolute">
+     <axis xyz="0 1 0" />
+     <origin xyz="${five_offset_x} ${five_offset_y} ${five_offset_z}" rpy="0 0 ${pose}" />
+     <parent link="${parent}_link"/>
+     <child link="${suffix}_${name}_link"/>
+     <limit lower="${-PI/2-0.5}"  upper="${PI/2+0.5}"
+             effort="30" velocity="${VELOCITY_LIMIT_SCALE*3.48}" /> <!-- alpha tested velocity and effort limits -->
+
+      <dynamics damping="10.0" />
+    <!--  <safety_controller k_position="100" k_velocity="10"
+                         soft_lower_limit="${reflect*PI/4-1.5+0.15}"
+                         soft_upper_limit="${reflect*PI/4+1.5-0.15}" />
+       joint angle when the rising or the falling flag is activated -->
+      <calibration  rising="${reflect*PI/4}" />
+
+    </joint>
+
+    <transmission name="tran_${suffix}_${name}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${parent}_${suffix}_${name}_joint">
+
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_${suffix}_${name}">
+
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+
+    <link name="${suffix}_${name}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+           <mesh filename="package://shuang/meshes/l5_Link.STL" scale="${base_mesh_scale} ${base_mesh_scale} ${base_mesh_scale}" />
+        </geometry>
+        <material name="${color}" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+       <geometry>
+          <mesh filename="package://shuang/meshes/l5_Link.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+      <origin
+        xyz="0.0122292009927977 3.5089774989859E-05 0.000123575261766429"
+        rpy="0 0 0" />
+      <mass
+        value="0.307600021170388" />
+      <inertia
+        ixx="0.000202176299522321"
+        ixy="1.61364439843868E-07"
+        ixz="-4.23316899883114E-07"
+        iyy="0.000335447796342317"
+        iyz="5.71293080528471E-07"
+        izz="0.000307825538492714" />
+      </inertial>
+    </link>
+  </macro>
+
+</robot>

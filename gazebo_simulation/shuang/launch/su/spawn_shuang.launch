@@ -1,0 +1,15 @@
+<launch>
+
+ <node name="position_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/shuang_position_controller"
+args="joint_state_controller
+      r_arm_controller
+      l_arm_controller
+      r_gripper_controller
+      l_gripper_controller" /> 
+ 
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-z 0.5 -urdf -model shuang_all -param robot_description -J base_l_1_joint 0.0 -J base_r_1_joint 0.0 -J l_1_l_2_joint -2.25 -J l_2_l_3_joint 0.0 -J l_3_l_4_joint 0.0 -J l_74_l_5_joint 0.0 -J l_arm_wrist_flex_joint 0.0 -J l_gripper_finger_joint 0.0 -J r_1_r_2_joint -2.25 -J r_2_r_3_joint 0.0 -J r_3_r_4_joint 0.0 -J r_4_r_5_joint 0.0 -J r_arm_wrist_flex_joint 0.0 -J r_gripper_finger_joint 0.0 " respawn="false" output="screen" />
+  
+  
+<!--<?xml version="1.0"?> -->
+</launch>
+

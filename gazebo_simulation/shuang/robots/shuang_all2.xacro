@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+
+<robot name="shuang_all" xmlns:xacro="http://ros.org/wiki/xacro">
+
+   <xacro:property name="camera_offset_x" value="-0.04" />
+   <xacro:property name="camera_offset_y" value="0" />
+   <xacro:property name="camera_offset_z" value="1" />
+
+   <xacro:property name="arm_offset_x" value="0.0" />
+   <xacro:property name="arm_offset_y" value="-0.05" />
+   <xacro:property name="arm_offset_z" value="0.20" />
+
+   <!-- Include all component files -->
+   <xacro:include filename="$(find shuang)/robots/materials.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/shuang_base2.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/kinect_camera.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/shuang_1.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/shuang_2.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/shuang_3.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/shuang_4.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/shuang_5.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/shuang_6.urdf.xacro" />     
+   <xacro:include filename="$(find shuang)/robots/gripper/pi_gripper.urdf.xacro" />
+   <xacro:include filename="$(find shuang)/robots/gripper/dynamixel_arm_hardware.xacro" />
+  <!-- <xacro:include filename="$(find shuang)/robots/gazebo.urdf.xacro" 
+  /> 
+<xacro:include filename="$(find shuang)/robots/s2_gazebo.urdf.xacro" />-->
+   <xacro:include filename="$(find shuang)/robots/gazebo.urdf.xacro" />
+   
+    <!-- Add the base and wheels-->
+
+
+  <!--  <xacro:macro name="transmission_block" params="joint_name trans motor">
+	  <transmission name="tran_${trans}">
+	    <type>transmission_interface/SimpleTransmission</type>
+	    <joint name="${joint_name}">
+	      <hardwareInterface>PositionJointInterface</hardwareInterface>
+	    </joint>
+	    <actuator name="motor_${motor}">
+	      <hardwareInterface>PositionJointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	    </actuator>
+	  </transmission>
+   </xacro:macro> -->
+<!--
+   <xacro:transmission_block joint_name="base_r_1_link"/>
+   <xacro:transmission_block joint_name="r_1_r_2_joint"/>
+   <xacro:transmission_block joint_name="r_2_r_3_joint"/>
+   <xacro:transmission_block joint_name="r_3_r_4_joint"/>
+   <xacro:transmission_block joint_name="r_4_r_5_joint"/>
+   <xacro:transmission_block joint_name="r_arm_wrist_flex_joint"/>
+
+   <xacro:transmission_block joint_name="r_gripper_finger_joint"/>
+
+   <xacro:transmission_block joint_name="base_l_1_link"/>
+   <xacro:transmission_block joint_name="l_1_l_2_joint"/>
+   <xacro:transmission_block joint_name="l_2_l_3_joint"/>
+   <xacro:transmission_block joint_name="l_3_l_4_joint"/>
+   <xacro:transmission_block joint_name="l_4_l_5_joint"/>
+   <xacro:transmission_block joint_name="l_arm_wrist_flex_joint"/>
+
+   <xacro:transmission_block joint_name="l_gripper_finger_joint"/> -->
+
+
+
+
+   <base name="base" color="Orange"/>   
+   
+   <shuang_1 parent="base" name="1" reflect="-1" suffix="l" pose="${PI}" color="Grey"/>
+   <shuang_1 parent="base" name="1" reflect="1" suffix="r" pose="0" color="Grey"/>
+
+   <!-- Attach the camera -->
+   <camera name="camera" parent="base" color="Black">
+      <origin xyz="${camera_offset_x} ${camera_offset_y} ${camera_offset_z}" rpy="0 0 0" />
+   </camera>
+
+   <shuang_2 parent="l_1" name="2" reflect="1" suffix="l" pose="0" color="Grey"/>
+   <shuang_2 parent="r_1" name="2" reflect="-1" suffix="r" pose="0" color="Grey"/>
+   
+   <shuang_3 parent="l_2" name="3" reflect="1" suffix="l" pose="0" color="Grey"/>
+   <shuang_3 parent="r_2" name="3" reflect="-1" suffix="r" pose="0" color="Grey"/>
+
+   <shuang_4 parent="l_3" name="4" reflect="1" suffix="l" pose="0" color="Grey"/>
+   <shuang_4 parent="r_3" name="4" reflect="-1" suffix="r" pose="0" color="Grey"/>
+
+   <shuang_5 parent="l_4" name="5" reflect="1" suffix="l" pose="0" color="Grey"/>
+   <shuang_5 parent="r_4" name="5" reflect="-1" suffix="r" pose="0" color="Grey"/> 
+
+
+  <!-- left wrist flex -->
+    <dynamixel_AX12_revolute parent="l_5" name="l_arm_wrist_flex" vlimit="3.14" llimit="-12" ulimit="12">
+      <origin xyz="0.05 0 0" rpy="0 ${-PI/2} 0" />
+      <axis xyz="0 0 1" />
+    </dynamixel_AX12_revolute>
+    
+    <bioloid_F3_fixed parent="l_arm_wrist_flex" name="l_arm_wrist_F3_0" color="Grey">
+      <origin xyz="0 0 ${-AX12_HEIGHT - F3_HEIGHT/2}" rpy="${PI} 0 0" />
+    </bioloid_F3_fixed>
+    
+    <!-- gripper attach joint -->
+    <bioloid_F3_fixed parent="l_arm_wrist_F3_0" name="l_arm_gripper_attach" color="Grey">
+      <origin xyz="0 0 0.0005" rpy="${PI} 0 0" />
+    </bioloid_F3_fixed>
+
+     <!-- Attach the right gripper -->
+   <gripper side="l" reflect="-1" parent="l_arm_gripper_attach" color="Green">
+     <origin xyz="0 0 0" rpy="0 0 0" /> 
+   </gripper>
+
+
+
+
+ <!-- right wrist flex -->
+    <dynamixel_AX12_revolute parent="r_5" name="r_arm_wrist_flex" vlimit="3.14" llimit="-12.0" ulimit="12.0">
+      <origin xyz="0.05 0 0" rpy="0 ${-PI/2} 0" />
+      <axis xyz="0 0 1" />
+    </dynamixel_AX12_revolute>
+    
+    <bioloid_F3_fixed parent="r_arm_wrist_flex" name="r_arm_wrist_F3_0" color="Grey">
+      <origin xyz="0 0 ${-AX12_HEIGHT - F3_HEIGHT/2}" rpy="${PI} 0 0" />
+    </bioloid_F3_fixed>
+    
+    <!-- gripper attach joint -->
+    <bioloid_F3_fixed parent="r_arm_wrist_F3_0" name="r_arm_gripper_attach" color="Grey">
+      <origin xyz="0 0 0.0005" rpy="${PI} 0 0" />
+    </bioloid_F3_fixed>
+
+     <!-- Attach the right gripper -->
+   <gripper side="r" reflect="-1" parent="r_arm_gripper_attach" color="Green">
+     <origin xyz="0 0 0" rpy="0 0 0" /> 
+   </gripper>
+
+
+</robot>
+
+

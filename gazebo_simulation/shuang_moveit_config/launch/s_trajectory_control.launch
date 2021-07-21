@@ -1,0 +1,28 @@
+    <launch>  
+        <rosparam file="$(find shuang_moveit_config)/config/s_trajectory_control.yaml" command="load"/>  
+      
+      <node name="shuang_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"  
+        output="screen" ns="/shuang_all" args="joint_state_controller 
+                                               base_r_1_joint_position_controller 
+                                               r_1_r_2_joint_position_controller
+                                               r_2_r_3_joint_position_controller
+                                               r_3_r_4_joint_position_controller
+                                               r_4_r_5_joint_position_controller
+                                               r_arm_wrist_flex_joint_position_controller
+                                               r_gripper_finger_joint_position_controller
+
+                                               base_l_1_joint_position_controller 
+                                               l_1_l_2_joint_position_controller
+                                               l_2_l_3_joint_position_controller
+                                               l_3_l_4_joint_position_controller
+                                               l_4_l_5_joint_position_controller
+                                               l_arm_wrist_flex_joint_position_controller
+                                               l_gripper_finger_joint_position_controller"/> 
+
+    <!-- Given the published joint states, publish tf for the robot links -->
+      <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+        <remap from="/joint_states" to="/shuang_all/joint_states" />
+      </node> 
+      
+    </launch>  

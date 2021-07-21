@@ -1,0 +1,971 @@
+<robot
+  name="shuang">
+  <link
+    name="base_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="27.8662419165871" />
+      <inertia
+        ixx="3.11430930601702"
+        ixy="-0.000132493919007124"
+        ixz="-0.0308207010248534"
+        iyy="3.05957771602693"
+        iyz="-0.000700626437276239"
+        izz="0.164698375243901" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/base_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/base_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="l1_Link">
+    <inertial>
+      <origin
+        xyz="-0.0399499418869884 0.0786427635269045 -0.00179915979589593"
+        rpy="0 0 0" />
+      <mass
+        value="3.09102601892824" />
+      <inertia
+        ixx="0.0126170999171622"
+        ixy="0.00557550163252118"
+        ixz="-0.000295268220815618"
+        iyy="0.0138131533656231"
+        iyz="0.000344213656326405"
+        izz="0.0180101579373756" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l1_joint"
+    type="revolute">
+    <origin
+      xyz="0.042264 0.18663 0.9"
+      rpy="3.199E-16 -1.5193 -3.3769E-16" />
+    <parent
+      link="base_Link" />
+    <child
+      link="l1_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="l2_Link">
+    <inertial>
+      <origin
+        xyz="0.00157773853592216 -0.101762214264386 -0.0905243288219354"
+        rpy="0 0 0" />
+      <mass
+        value="5.36773764563669" />
+      <inertia
+        ixx="0.0617262813363172"
+        ixy="0.000807008375605312"
+        ixz="-0.00184227841795225"
+        iyy="0.060743644703558"
+        iyz="-0.0258940987101058"
+        izz="0.0614875485778298" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l2_joint"
+    type="revolute">
+    <origin
+      xyz="-0.088 0.131 0"
+      rpy="-0.78554 -1.498 -2.3547" />
+    <parent
+      link="l1_Link" />
+    <child
+      link="l2_Link" />
+    <axis
+      xyz="0.99735 -0.051453 0.051438" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="l3_Link">
+    <inertial>
+      <origin
+        xyz="-0.00173157361890142 -0.0183352837769961 0.0120320573683842"
+        rpy="0 0 0" />
+      <mass
+        value="2.61956491426746" />
+      <inertia
+        ixx="0.00901805394840416"
+        ixy="7.31971325341322E-05"
+        ixz="6.45038631100532E-05"
+        iyy="0.00817731504287131"
+        iyz="-0.00077776654821028"
+        izz="0.00724394034944822" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l3_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.21917 -0.21923"
+      rpy="-4.0829E-17 -1.5944E-17 -0.049852" />
+    <parent
+      link="l2_Link" />
+    <child
+      link="l3_Link" />
+    <axis
+      xyz="0.99867 -0.0016895 0.051438" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="l4_Link">
+    <inertial>
+      <origin
+        xyz="-0.00673251614129881 -0.00309775229959286 0.131784355349946"
+        rpy="0 0 0" />
+      <mass
+        value="2.141430952487" />
+      <inertia
+        ixx="0.0109246716986151"
+        ixy="-4.43068627219394E-06"
+        ixz="0.0003466225351514"
+        iyy="0.011651074406019"
+        iyz="0.000105850300608015"
+        izz="0.00411592820170564" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l4_joint"
+    type="revolute">
+    <origin
+      xyz="0.015697 -0.029979 -0.30574"
+      rpy="7.5806E-19 6.9326E-18 -0.013806" />
+    <parent
+      link="l3_Link" />
+    <child
+      link="l4_Link" />
+    <axis
+      xyz="-0.051008 -0.033492 0.99814" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="l5_Link">
+    <inertial>
+      <origin
+        xyz="0.000589333861407545 0.000792749684409233 -0.0121899175990339"
+        rpy="0 0 0" />
+      <mass
+        value="0.307600023444334" />
+      <inertia
+        ixx="0.000335083937459052"
+        ixy="-9.72447731078863E-07"
+        ixz="6.91309564267799E-06"
+        iyy="0.000307466312002691"
+        iyz="6.15200085937916E-06"
+        izz="0.000202899387515985" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l5_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l5_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l5_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="5.5701E-18 1.372E-21 0.0010886" />
+    <parent
+      link="l4_Link" />
+    <child
+      link="l5_Link" />
+    <axis
+      xyz="-0.9987 0.0027978 -0.05098" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="l6_Link">
+    <inertial>
+      <origin
+        xyz="-0.000231633803386477 -5.59299496253329E-05 0.00308641262796974"
+        rpy="0 0 0" />
+      <mass
+        value="0.0370219528649854" />
+      <inertia
+        ixx="1.4569706936817E-05"
+        ixy="2.4316775937884E-06"
+        ixz="-3.57719903156215E-07"
+        iyy="1.50515572886971E-05"
+        iyz="1.86889437684507E-07"
+        izz="1.92823611018165E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l6_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.949019607843137 0.909803921568627 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/l6_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l6_joint"
+    type="revolute">
+    <origin
+      xyz="0.0040845 0.0043781 -0.079776"
+      rpy="-4.6738E-18 5.0453E-18 0.83107" />
+    <parent
+      link="l5_Link" />
+    <child
+      link="l6_Link" />
+    <axis
+      xyz="-0.07484 0.00082218 0.9972" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="lg1_Link">
+    <inertial>
+      <origin
+        xyz="-0.0117573748402481 -0.0120747884306764 0.039048529040938"
+        rpy="0 0 0" />
+      <mass
+        value="0.0177713711112262" />
+      <inertia
+        ixx="1.44433033901783E-05"
+        ixy="4.72594982661017E-09"
+        ixz="9.50008382876675E-08"
+        iyy="1.29495674966534E-05"
+        iyz="-5.28341377590252E-07"
+        izz="2.35515513885838E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/lg1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/lg1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lg1_joint"
+    type="prismatic">
+    <origin
+      xyz="0.025374 -0.003647 -0.0061151"
+      rpy="3.1416 -6.9855E-18 2.4061" />
+    <parent
+      link="l6_Link" />
+    <child
+      link="lg1_Link" />
+    <axis
+      xyz="-0.99843 -0.0027845 -0.055975" />
+    <limit
+      lower="-0.02"
+      upper="0.02"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="lg2_Link">
+    <inertial>
+      <origin
+        xyz="-0.0117573748402481 -0.0120747884306766 0.0390485290409381"
+        rpy="0 0 0" />
+      <mass
+        value="0.0177713711112262" />
+      <inertia
+        ixx="1.44433033901783E-05"
+        ixy="4.7259498266125E-09"
+        ixz="9.50008382876629E-08"
+        iyy="1.29495674966534E-05"
+        iyz="-5.28341377590251E-07"
+        izz="2.35515513885839E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/lg2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/lg2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lg2_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.023879 0.0033627 -0.0098174"
+      rpy="-3.0419 -0.11201 -0.74113" />
+    <parent
+      link="l6_Link" />
+    <child
+      link="lg2_Link" />
+    <axis
+      xyz="0.99843 0.0027845 0.055975" />
+    <limit
+      lower="-0.02"
+      upper="0.02"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="r1_Link">
+    <inertial>
+      <origin
+        xyz="-0.0399499465577251 0.0786427669335215 -0.00179915325387669"
+        rpy="0 0 0" />
+      <mass
+        value="3.0910257295979" />
+      <inertia
+        ixx="0.0126170995781766"
+        ixy="0.0055755014891478"
+        ixz="-0.000295269550978695"
+        iyy="0.0138131510539468"
+        iyz="0.000344214023515119"
+        izz="0.018010156692679" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r1_joint"
+    type="revolute">
+    <origin
+      xyz="0.042264 -0.14837 0.9"
+      rpy="-3.1416 -1.5232 -5.1118E-16" />
+    <parent
+      link="base_Link" />
+    <child
+      link="r1_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="r2_Link">
+    <inertial>
+      <origin
+        xyz="0.00157738881871001 -0.101762904313049 -0.0905251418662885"
+        rpy="0 0 0" />
+      <mass
+        value="5.3677527053169" />
+      <inertia
+        ixx="0.0617272960468809"
+        ixy="0.000806695873154251"
+        ixz="-0.00184262680799203"
+        iyy="0.0607443547262287"
+        iyz="-0.0258946298746775"
+        izz="0.0614881815957731" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r2_joint"
+    type="revolute">
+    <origin
+      xyz="-0.088 0.131 0"
+      rpy="-0.78554 -1.498 -1.7338" />
+    <parent
+      link="r1_Link" />
+    <child
+      link="r2_Link" />
+    <axis
+      xyz="0.99735 -0.051453 0.051438" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="r3_Link">
+    <inertial>
+      <origin
+        xyz="-0.00173162251375611 -0.0183351675806108 0.0120320837466247"
+        rpy="0 0 0" />
+      <mass
+        value="2.61955962629529" />
+      <inertia
+        ixx="0.00901803778301052"
+        ixy="7.31888751895862E-05"
+        ixz="6.4503057279244E-05"
+        iyy="0.00817731043400442"
+        iyz="-0.00077776205971407"
+        izz="0.00724392051060596" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r3_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.21917 -0.21923"
+      rpy="-0.72521 -0.011842 -0.084447" />
+    <parent
+      link="r2_Link" />
+    <child
+      link="r3_Link" />
+    <axis
+      xyz="0.99867 -0.0016895 0.051438" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="r4_Link">
+    <inertial>
+      <origin
+        xyz="-0.00673251749725011 -0.00309774103916372 0.131784355469483"
+        rpy="0 0 0" />
+      <mass
+        value="2.14143119204517" />
+      <inertia
+        ixx="0.0109246736713123"
+        ixy="-4.43049693386059E-06"
+        ixz="0.000346622607462855"
+        iyy="0.0116510749313231"
+        iyz="0.000105849681316334"
+        izz="0.00411592931099961" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r4_joint"
+    type="revolute">
+    <origin
+      xyz="0.015697 -0.029979 -0.30574"
+      rpy="-0.0015993 -0.001015 0.01718" />
+    <parent
+      link="r3_Link" />
+    <child
+      link="r4_Link" />
+    <axis
+      xyz="-0.051008 -0.033492 0.99814" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="r5_Link">
+    <inertial>
+      <origin
+        xyz="0.000589333891802274 0.000792743134063023 -0.0121899188085702"
+        rpy="0 0 0" />
+      <mass
+        value="0.307600020112715" />
+      <inertia
+        ixx="0.000335083935920303"
+        ixy="-9.72458138433069E-07"
+        ixz="6.91309411716364E-06"
+        iyy="0.000307466309627448"
+        iyz="6.15201982410061E-06"
+        izz="0.000202899386498415" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r5_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r5_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r5_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-0.26718 0.10094 3.1291" />
+    <parent
+      link="r4_Link" />
+    <child
+      link="r5_Link" />
+    <axis
+      xyz="0.9987 -0.0027978 0.05098" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="r6_Link">
+    <inertial>
+      <origin
+        xyz="-0.000231634766772015 -5.5929968945434E-05 0.0030864135811369"
+        rpy="0 0 0" />
+      <mass
+        value="0.0370219562644542" />
+      <inertia
+        ixx="1.45697076122159E-05"
+        ixy="2.43167675060568E-06"
+        ixz="-3.57719661091978E-07"
+        iyy="1.50515578111277E-05"
+        iyz="1.86889505219469E-07"
+        izz="1.92823617204778E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r6_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.949019607843137 0.909803921568627 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/r6_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r6_joint"
+    type="revolute">
+    <origin
+      xyz="0.0040845 0.0043781 -0.079776"
+      rpy="-0.013936 0.14838 -2.5195" />
+    <parent
+      link="r5_Link" />
+    <child
+      link="r6_Link" />
+    <axis
+      xyz="-0.07484 0.00082218 0.9972" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rg3_Link">
+    <inertial>
+      <origin
+        xyz="-0.0117573748402481 -0.0120747884306764 0.039048529040938"
+        rpy="0 0 0" />
+      <mass
+        value="0.0177713711112262" />
+      <inertia
+        ixx="1.44433033901783E-05"
+        ixy="4.72594982660954E-09"
+        ixz="9.50008382876677E-08"
+        iyy="1.29495674966534E-05"
+        iyz="-5.28341377590248E-07"
+        izz="2.35515513885838E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/rg3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/rg3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rg3_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.024602 0.0040204 -0.0098722"
+      rpy="-3.0419 -0.11201 -0.74113" />
+    <parent
+      link="r6_Link" />
+    <child
+      link="rg3_Link" />
+    <axis
+      xyz="0.99843 0.0027845 0.055975" />
+    <limit
+      lower="-0.02"
+      upper="0.02"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rg4_Link">
+    <inertial>
+      <origin
+        xyz="-0.0117573748402481 -0.0120747884306765 0.039048529040938"
+        rpy="0 0 0" />
+      <mass
+        value="0.0177713711112262" />
+      <inertia
+        ixx="1.44433033901783E-05"
+        ixy="4.72594982660912E-09"
+        ixz="9.50008382876681E-08"
+        iyy="1.29495674966534E-05"
+        iyz="-5.28341377590246E-07"
+        izz="2.35515513885838E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/rg4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://shuang/meshes/rg4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rg4_joint"
+    type="prismatic">
+    <origin
+      xyz="0.024595 -0.0029377 -0.0061742"
+      rpy="-3.1416 -9.9747E-17 2.4061" />
+    <parent
+      link="r6_Link" />
+    <child
+      link="rg4_Link" />
+    <axis
+      xyz="-0.99843 -0.0027845 -0.055975" />
+    <limit
+      lower="-0.02"
+      upper="0.02"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

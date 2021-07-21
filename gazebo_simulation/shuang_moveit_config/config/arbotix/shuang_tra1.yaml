@@ -1,0 +1,33 @@
+port: /dev/ttyUSB0
+baud: 1000000
+rate: 100
+sync_write: True
+sync_read: False
+read_rate: 20
+write_rate: 20
+
+joints: {
+    base_l_1_joint: {id: 1, neutral: 0, min_angle: -145, max_angle: 145},
+    l_1_l_2_joint: {id: 2, neutral: 50, min_angle: -90, max_angle: 90},
+    l_2_l_3_joint: {id: 3, neutral: 0, invert: True},
+    l_3_l_4_joint: {id: 4, neutral: 0, min_angle: -90, max_angle: 90},
+    l_4_l_5_joint: {id: 5, neutral: 50, min_angle: -90, max_angle: 90},
+    l_arm_wrist_flex_joint: {id: 6, neutral: 512, min_angle: -90, max_angle: 90},
+    l_gripper_finger_joint: {id: 7, neutral: 512},
+    
+    base_r_1_joint: {id: 8, neutral: 512, min_angle: -145, max_angle: 145},
+    r_1_r_2_joint: {id: 9, neutral: 512, min_angle: -90, max_angle: 90},
+    r_2_r_3_joint: {id: 10, neutral: 512, invert: True},
+    r_3_r_4_joint: {id: 11, neutral: 512, min_angle: -90, max_angle: 90},
+    r_4_r_5_joint: {id: 12, neutral: 512, min_angle: -90, max_angle: 90},
+    r_arm_wrist_flex_joint: {id: 13, neutral: 512, min_angle: -90, max_angle: 90},
+    r_gripper_finger_joint: {id: 14, neutral: 512}
+}
+    
+
+controllers: {
+   
+   l_arm_controller: {onboard: False, action_name: l_arm_controller/follow_joint_trajectory, type: follow_controller, joints: [base_l_1_joint, l_1_l_2_joint,  l_2_l_3_joint, l_3_l_4_joint, l_4_l_5_joint,l_arm_wrist_flex_joint]},
+   r_arm_controller: {onboard: False, action_name: r_arm_controller/follow_joint_trajectory, type: follow_controller, joints: [base_r_1_joint, r_1_r_2_joint, r_2_r_3_joint, r_3_r_4_joint, r_4_r_5_joint,r_arm_wrist_flex_joint]}
+}
+   

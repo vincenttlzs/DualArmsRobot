@@ -1,0 +1,19 @@
+<launch>
+  <arg name="sim" default="false" />
+  <!--<arg name="limited" default="false"/> -->
+  <arg name="debug" default="false" />
+    
+  <!-- Remap follow_joint_trajectory -->
+  <!--<remap if="$(arg sim)" from="/follow_joint_trajectory" to="/r_arm_controller/follow_joint_trajectory"/>
+
+  
+  <node pkg="moveit_ros_move_group" type="move_group" name="any_name" output="screen">
+  <remap from="joint_states" to="robot/joint_states"/>
+  </node>-->
+  
+  <!-- Launch moveit -->
+  <include file="$(find shuang_moveit_config)/launch/move_group.launch">
+   <!-- <arg name="limited" default="$(arg limited)"/> -->
+    <arg name="debug" default="$(arg debug)" />
+  </include>
+</launch>

@@ -1,0 +1,63 @@
+    shuang_all:  
+
+      joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50 
+
+      r_joint_controller:  
+        type: "position_controllers/JointTrajectoryController"  
+        joints:  
+          - base_r_1_joint  
+          - r_1_r_2_joint  
+          - r_2_r_3_joint  
+          - r_3_r_4_joint  
+          - r_4_r_5_joint 
+          - r_arm_wrist_flex_joint           
+      
+        gains:  
+          base_r_1_joint:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+          r_1_r_2_joint: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}   
+          r_2_r_3_joint:       {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+          r_3_r_4_joint:    {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+          r_4_r_5_joint:      {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+          r_arm_wrist_flex_joint:    {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+
+      l_joint_controller:  
+        type: "position_controllers/JointTrajectoryController"  
+        joints:  
+          - base_l_1_joint  
+          - l_1_l_2_joint  
+          - l_2_l_3_joint  
+          - l_3_l_4_joint  
+          - l_4_l_5_joint 
+          - l_arm_wrist_flex_joint  
+           
+      
+        gains:  
+          base_l_1_joint:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+          l_1_l_2_joint: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}   
+          l_2_l_3_joint:       {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+          l_3_l_4_joint:    {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+          l_4_l_5_joint:      {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+          l_arm_wrist_flex_joint:    {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}  
+      
+      
+      r_gripper_controller:  
+        type: "position_controllers/JointTrajectoryController"  
+        joints:  
+          - r_gripper_finger_joint  
+   
+        gains:  
+          r_gripper_finger_joint:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}  
+          
+
+      l_gripper_controller:  
+        type: "position_controllers/JointTrajectoryController"  
+        joints:  
+          - l_gripper_finger_joint
+ 
+        gains:  
+          l_gripper_finger_joint:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}  
+        
+
+
